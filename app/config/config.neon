@@ -1,5 +1,12 @@
 parameters:
 
+extensions:
+    console: Contributte\Console\DI\ConsoleExtension
+
+console:
+    catchExceptions: false
+    autoExit: true
+    lazy: false
 
 application:
 	errorPresenter: Error
@@ -12,4 +19,10 @@ session:
 
 
 services:
+
+
+
+	##CONSOLE
+	- App\Console\TestCommand
+
 	router: App\RouterFactory::createRouter
