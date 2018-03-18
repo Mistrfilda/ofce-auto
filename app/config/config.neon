@@ -1,26 +1,57 @@
 parameters:
 
 extensions:
-    console: Contributte\Console\DI\ConsoleExtension
+	console: Contributte\Console\DI\ConsoleExtension
+	dbal: Nettrine\DBAL\DI\DbalExtension
+	dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension
+	orm: Nettrine\ORM\DI\OrmExtension
+	orm.console: Nettrine\ORM\DI\OrmConsoleExtension
+	orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
+
+orm.annotations:
+    paths:
+        - app/model/database/entity
+
+orm:
+	entityManagerClass: App\Model\Database\EntityManager
 
 console:
-    catchExceptions: false
-    autoExit: true
-    lazy: false
+	catchExceptions: false
+	autoExit: true
+	lazy: false
+
+dbal:
+ 	debug: %debugMode%
+ 	configuration:
+ 		sqlLogger: NULL
+ 		resultCacheImpl: NULL
+ 		filterSchemaAssetsExpression: NULL
+ 		autoCommit: TRUE
 
 application:
 	errorPresenter: Error
 	mapping:
 		*: App\*Module\Presenters\*Presenter
 
+decorator:
+	App\Components\Forms\BaseForm:
+		inject: on
+	App\Model\BaseModel:
+		inject: on
 
 session:
 	expiration: 14 days
 
 
 services:
+	##COMPONENTS - FORMS
+	- App\Components\Forms\FormFactory
+	- App\Components\Forms\Group\EditUserGroupFormFactory
+	- App\Components\Forms\User\EditUserFormFactory
 
-
+	##MODELS
+	- App\Model\UserGroupModel
+	- App\Model\UserModel
 
 	##CONSOLE
 	- App\Console\TestCommand
