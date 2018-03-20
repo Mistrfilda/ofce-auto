@@ -14,6 +14,11 @@ class UserGroupModel extends BaseModel implements IModel
 	/** @var UserGroupRepository */
 	private $userGroupRepository;
 
+	protected function setRepositories()
+	{
+		$this->userGroupRepository = $this->entityManager->getUserGroupRepository();
+	}
+
 	/**
 	 * @param array $data
 	 * @param int|NULL $id
@@ -21,7 +26,6 @@ class UserGroupModel extends BaseModel implements IModel
 	 */
 	public function update(array $data, int $id = NULL) : Entity
 	{
-		$this->userGroupRepository = $this->entityManager->getUserGroupRepository();
 		if ($id !== NULL) {
 			$group = $this->getData($id);
 		} else {
@@ -41,13 +45,11 @@ class UserGroupModel extends BaseModel implements IModel
 	 */
 	public function getData(int $id = NULL) : UserGroup
 	{
-		$this->userGroupRepository = $this->entityManager->getUserGroupRepository();
 		return $this->userGroupRepository->getById($id);
 	}
 
 	public function getPairs() : array
 	{
-		$this->userGroupRepository = $this->entityManager->getUserGroupRepository();
 		return $this->userGroupRepository->findPairs('name');
 	}
 }
