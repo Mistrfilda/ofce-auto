@@ -4,7 +4,7 @@
 namespace App\Components\Forms;
 
 
-use Nette\Forms\Form;
+use Tomaj\Form\Renderer\BootstrapRenderer;
 
 
 class FormFactory
@@ -15,6 +15,7 @@ class FormFactory
 	public function create() : AppForm
 	{
 		$form = new AppForm();
+		$form->setRenderer(new BootstrapRenderer());
 		return $form;
 	}
 }

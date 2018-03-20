@@ -24,12 +24,23 @@ abstract class BaseForm extends Control
 		$this->formFactory = $formFactory;
 	}
 
+
+	/**
+	 * @param int|null $id
+	 */
 	public function setId(?int $id)
 	{
 		$this->id = $id;
 	}
 
-	public function setEntityToForm(Entity $entity, AppForm $form, array $skip = [])
+
+	/**
+	 * @param Entity $entity
+	 * @param AppForm $form
+	 * @param array $skip
+	 * @return AppForm
+	 */
+	public function setEntityToForm(Entity $entity, AppForm $form, array $skip = []) : AppForm
 	{
 		$defaults = [];
 		foreach ($form->getControls() as $key => $control) {
@@ -44,12 +55,14 @@ abstract class BaseForm extends Control
 			if ($control instanceof MultiSelectBox) {
 				$ids = [];
 				$methodName = 'get' . Strings::capitalize(str_replace('_', '',$key));
+				/** @var Collection $collection */
 				$collection = $entity->$methodName();
 				if ($collection instanceof Collection) {
 					foreach ($collection->getValues() as $value) {
 						$ids[] = $value->getId();
 					}
 				}
+
 				$defaults[$key] = $ids;
 				continue;
 			}

@@ -38,6 +38,8 @@ decorator:
 		inject: on
 	App\Model\BaseModel:
 		inject: on
+	App\Components\Grids\BaseGrid:
+		inject: on
 
 session:
 	expiration: 14 days
@@ -48,6 +50,9 @@ services:
 	- App\Components\Forms\FormFactory
 	- App\Components\Forms\Group\EditUserGroupFormFactory
 	- App\Components\Forms\User\EditUserFormFactory
+
+	##COMPONENTS - GRIDS
+	- App\Components\Grids\GridFactory
 
 	##MODELS
 	- App\Model\UserGroupModel
