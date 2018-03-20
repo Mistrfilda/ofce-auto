@@ -22,7 +22,9 @@
 		"tracy/tracy": "^2.4",
 		"contributte/console": "^0.3.0",
 		"nettrine/orm": "dev-master",
-		"nettrine/migrations": "^0.3"
+		"nettrine/migrations": "^0.3",
+		"tomaj/nette-bootstrap-form": "^1.3",
+		"ublaboo/datagrid": "^5.5"
 	},
 	"require-dev": {
 		"nette/tester": "^2.0"
