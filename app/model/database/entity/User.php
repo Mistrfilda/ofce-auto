@@ -10,9 +10,12 @@ use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Nette\Security\Passwords;
 use Nettrine\ORM\Entity\Attributes\Id;
+use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
  * @ORM\Entity(repositoryClass="App\Model\Database\Repository\UserRepository")
+ * @Table(uniqueConstraints={@UniqueConstraint(name="username", columns={"username"})})
  */
 class User extends Entity
 {

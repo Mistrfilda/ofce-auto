@@ -4,17 +4,20 @@
 namespace App\Auth;
 
 
+use App\Model\RoleModel;
 use Nette\Security\IAuthorizator;
 
 
 class Authorizator implements IAuthorizator
 {
-	public function isAllowed($role, $resource, $privilege)
+	private $roleModel;
+
+	public function __construct(RoleModel $roleModel)
 	{
-		dump($role);
-		die();
-		//for now
-		return TRUE;
+		$this->roleModel = $roleModel;
 	}
 
+	public function isAllowed($role, $resource, $privilege)
+	{
+	}
 }

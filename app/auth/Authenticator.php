@@ -39,6 +39,8 @@ class Authenticator implements IAuthenticator
 			throw new AppException(ErrorCodes::UNKNOWN_LOGIN);
 		}
 
-		return new Identity($user->getId());
+
+		//use id for role aswell (in authorizator get actual role)
+		return new Identity($user->getId(), $user->getRole()->getId());
 	}
 }

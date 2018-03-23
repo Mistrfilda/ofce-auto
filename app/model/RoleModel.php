@@ -36,6 +36,15 @@ class RoleModel extends BaseModel
 	}
 
 	/**
+	 * @param int $id
+	 * @return Role
+	 */
+	public function getData(int $id) : Role
+	{
+		return $this->roleRepository->getById($id);
+	}
+
+	/**
 	 * @param string $name
 	 * @return Role
 	 */

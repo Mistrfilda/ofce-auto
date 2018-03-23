@@ -36,7 +36,8 @@ class RegistrationFacade extends Facade
 		$this->user = $user;
 	}
 
-	public function register($data)
+
+	public function register(array $data)
 	{
 		$this->entityManager->beginTransaction();
 		$user = new User();
@@ -61,5 +62,14 @@ class RegistrationFacade extends Facade
 			$this->entityManager->rollback();
 			throw $e;
 		}
+	}
+
+	public function validateToken(string $token)
+	{
+		$registrationToken = $this->registrationTokenModel->getTokenByToken($token);
+		$user = $this->userModel->getData($registrationToken->getUser()->getId());
+		$user->setEmailValid(1);
+		$this->entityManager->persist($user);
+		$this->entityManager->flush();
 	}
 }

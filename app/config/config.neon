@@ -58,6 +58,7 @@ services:
 	- App\Components\Forms\Login\LoginFormFactory
 	- App\Components\Forms\Role\EditRoleFormFactory
 	- App\Components\Forms\Login\RegistrationFormFactory
+	- App\Components\Forms\Rights\RightsFormFactory
 
 	##COMPONENTS - GRIDS
 	- App\Components\Grids\GridFactory

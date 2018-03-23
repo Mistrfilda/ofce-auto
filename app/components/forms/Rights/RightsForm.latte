@@ -1,0 +1,28 @@
+{form rightForm}
+	<div class="row m-t-lg">
+	<div class="col-md-6">
+		<div class="tabs-container">
+
+			<div class="tabs-left">
+				<ul class="nav nav-tabs">
+					{foreach $roles as $key => $role}
+						<li {first}class="active"{/first}><a data-toggle="tab" href="#{$key}">{$role}</a></li>
+					{/foreach}
+				</ul>
+				<div class="tab-content ">
+					{foreach $roles as $key => $role}
+						<div id="{$key}" class="tab-pane {first}active{/first}">
+							<div class="panel-body">
+								{input $key}
+							</div>
+						</div>
+					{/foreach}
+				</div>
+
+			</div>
+
+		</div>
+
+		<button type="submit" class="btn btn-primary block center-block m-b" n:name="submit">Save</button>
+	</div>
+{/form}
