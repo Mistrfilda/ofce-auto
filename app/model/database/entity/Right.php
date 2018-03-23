@@ -10,10 +10,11 @@ use Doctrine\ORM\Mapping\JoinTable;
 use Nette\Security\Passwords;
 use Doctrine\ORM\Mapping\Table;
 use Nettrine\ORM\Entity\Attributes\Id;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
  * @ORM\Entity(repositoryClass="App\Model\Database\Repository\RightRepository")
- * @Table(name="app_right")
+ * @Table(name="app_right", uniqueConstraints={@UniqueConstraint(name="appId", columns={"app_id"})})
  */
 class Right extends Entity
 {

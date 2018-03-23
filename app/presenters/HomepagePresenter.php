@@ -8,10 +8,11 @@ use App\Components\Forms\Login\LoginFormFactory;
 use App\Components\Forms\Role\EditRoleFormFactory;
 use App\Components\Forms\User\EditUserFormFactory;
 use App\Components\Grids\AppGrid;
+use App\Model\RightModel;
 use Nette;
 
 
-class HomepagePresenter extends BasePresenter
+class HomepagePresenter extends SecurePresenter
 {
 	private $editUserGroupFormFactory;
 

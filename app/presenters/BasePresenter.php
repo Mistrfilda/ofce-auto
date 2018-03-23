@@ -43,4 +43,10 @@ abstract class BasePresenter extends Presenter
 			],
 		];
 	}
+
+	public function handleLogout()
+	{
+		$this->getUser()->logout(TRUE);
+		$this->getPresenter()->redirect('Login:Login');
+	}
 }

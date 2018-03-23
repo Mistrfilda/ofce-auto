@@ -11,5 +11,5 @@ class Rights
 		SYSTEM_USERS = 2,
 		SYSTEM_ROLES = 3,
 		SYSTEM_GROUPS = 4,
-		SYSTEM_RIGHTS = 3;
+		SYSTEM_RIGHTS = 5;
 }

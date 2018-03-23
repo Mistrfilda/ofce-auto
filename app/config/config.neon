@@ -40,6 +40,8 @@ decorator:
 		inject: on
 	App\Components\Grids\BaseGrid:
 		inject: on
+	App\Model\Facade\Facade:
+		inject: on
 
 session:
 	expiration: 14 days
@@ -55,6 +57,7 @@ services:
 	- App\Components\Forms\User\EditUserFormFactory
 	- App\Components\Forms\Login\LoginFormFactory
 	- App\Components\Forms\Role\EditRoleFormFactory
+	- App\Components\Forms\Login\RegistrationFormFactory
 
 	##COMPONENTS - GRIDS
 	- App\Components\Grids\GridFactory
@@ -64,6 +67,10 @@ services:
 	- App\Model\UserModel
 	- App\Model\RoleModel
 	- App\Model\RightModel
+	- App\Model\RegistrationTokenModel
+
+	##FACADE
+	- App\Model\Facade\RegistrationFacade
 
 	##CONSOLE
 	- App\Console\UpdateRightsCommand

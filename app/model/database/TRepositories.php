@@ -2,13 +2,14 @@
 
 namespace App\Model\Database;
 
-use App\Model\Database\Entity\Group;
+use App\Model\Database\Entity\RegistrationToken;
 use App\Model\Database\Entity\Right;
 use App\Model\Database\Entity\Role;
 use App\Model\Database\Entity\User;
 use App\Model\Database\Entity\UserGroup;
-use App\Model\Database\Repository\GroupRepository;
 
+
+use App\Model\Database\Repository\RegistrationTokenRepository;
 use App\Model\Database\Repository\RightRepository;
 use App\Model\Database\Repository\RoleRepository;
 use App\Model\Database\Repository\UserGroupRepository;
@@ -53,5 +54,10 @@ trait TRepositories
 	public function getRoleRepository(): RoleRepository
 	{
 		return $this->getRepository(Role::class);
+	}
+
+	public function getRegistrationTokenRepository() : RegistrationTokenRepository
+	{
+		return $this->getRepository(RegistrationToken::class);
 	}
 }

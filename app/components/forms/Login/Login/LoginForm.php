@@ -5,6 +5,9 @@ namespace App\Components\Forms\Login;
 
 
 use App\Components\Forms\BaseForm;
+use App\Lib\AppException;
+use App\Lib\ErrorCodes;
+use Nette\Forms\Form;
 use Nette\Security\User;
 
 
@@ -33,10 +36,22 @@ class LoginForm extends BaseForm
 		return $form;
 	}
 
-	public function loginFormSucceed($form, $values)
+	public function loginFormSucceed(Form $form, $values)
 	{
-		dump($values);
-		$this->user->login($values['username'], $values['password']);
-		die();
+		try {
+			$this->user->login($values['username'], $values['password']);
+		} catch (AppException $e) {
+			if ($e->getCode() === ErrorCodes::UNKNOWN_LOGIN) {
+				$this->getPresenter()->flashMessage('Unknown login', 'danger');
+				return;
+			}
+
+			throw $e;
+		}
+		if ($this->getPresenter()->getParameter('backlink') !== NULL) {
+			$this->getPresenter()->restoreRequest($this->getPresenter()->getParameter('backlink'));
+		}
+
+		$this->getPresenter()->redirect('Homepage:default');
 	}
 }

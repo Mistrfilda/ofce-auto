@@ -38,6 +38,12 @@ class User extends Entity
 	private $email;
 
 	/**
+	 * @ORM\Column(type="boolean")
+	 * @var int
+	 */
+	private $emailValid;
+
+	/**
 	 * @ORM\Column(type="string", length=64)
 	 * @var string
 	 */
@@ -69,6 +75,7 @@ class User extends Entity
 	{
 		$this->userGroups = new ArrayCollection();
 		$this->registered = new \DateTime();
+		$this->emailValid = 0;
 	}
 
 
@@ -159,7 +166,6 @@ class User extends Entity
 		return $this->username;
 	}
 
-
 	/**
 	 * @param string $username
 	 */
@@ -183,5 +189,21 @@ class User extends Entity
 	public function setRole(Role $role)
 	{
 		$this->role = $role;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getEmailValid(): int
+	{
+		return $this->emailValid;
+	}
+
+	/**
+	 * @param int $emailValid
+	 */
+	public function setEmailValid(int $emailValid)
+	{
+		$this->emailValid = $emailValid;
 	}
 }

@@ -34,4 +34,13 @@ class RoleModel extends BaseModel
 	{
 		return $this->roleRepository->findPairs('name');
 	}
+
+	/**
+	 * @param string $name
+	 * @return Role
+	 */
+	public function getByName(string $name) : Role
+	{
+		return $this->roleRepository->getByKey('name', $name);
+	}
 }

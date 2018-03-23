@@ -52,4 +52,13 @@ class UserGroupModel extends BaseModel implements IModel
 	{
 		return $this->userGroupRepository->findPairs('name');
 	}
+
+	/**
+	 * @param string $name
+	 * @return UserGroup
+	 */
+	public function getByName(string $name) : UserGroup
+	{
+		return $this->userGroupRepository->getByKey('name', $name);
+	}
 }
