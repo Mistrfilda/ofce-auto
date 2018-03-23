@@ -72,9 +72,6 @@ abstract class BaseForm extends Control
 
 			if ($value instanceof Entity) {
 				$value = $value->getId();
-				dump('TOHLE JE ENTITA LOL');
-				dump($value);
-				die();
 			}
 
 			$defaults[$key] = $value;

@@ -4,8 +4,11 @@ namespace App\Model\Database\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\DateTimeType;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Nette\Security\Passwords;
 use Nettrine\ORM\Entity\Attributes\Id;
 
 /**
@@ -21,6 +24,13 @@ class User extends Entity
 	 */
 	private $name;
 
+
+	/**
+	 * @ORM\Column(type="string")
+	 * @var string
+	 */
+	private $username;
+
 	/**
 	 * @ORM\Column(type="string")
 	 * @var string
@@ -33,6 +43,12 @@ class User extends Entity
 	 */
 	private $password;
 
+	/**
+	 * @ORM\Column(type="datetime")
+	 * @var DateTimeType
+	 */
+	private $registered;
+
 
 	/**
 	 * @var UserGroup[]|Collection
@@ -41,9 +57,18 @@ class User extends Entity
 	 */
 	private $userGroups;
 
+
+	/**
+	 * @var Role
+	 * @ORM\ManyToOne(targetEntity="Role", inversedBy="users")
+	 * @JoinColumn(name="role_id", referencedColumnName="id")
+	 */
+	private $role;
+
 	public function __construct()
 	{
 		$this->userGroups = new ArrayCollection();
+		$this->registered = new \DateTime();
 	}
 
 
@@ -79,7 +104,7 @@ class User extends Entity
 	 */
 	public function setPassword(string $password)
 	{
-		$this->password = $password;
+		$this->password = Passwords::hash($password);
 	}
 
 
@@ -103,11 +128,10 @@ class User extends Entity
 	/**
 	 * @return UserGroup[]|Collection
 	 */
-	public function getUserGroups()
+	public function getUserGroups() : Collection
 	{
 		return $this->userGroups;
 	}
-
 
 	/**
 	 * @param UserGroup $userGroup
@@ -115,5 +139,49 @@ class User extends Entity
 	public function setUserGroup(UserGroup $userGroup)
 	{
 		$this->userGroups->add($userGroup);
+	}
+
+
+	/**
+	 * @return DateTimeType
+	 */
+	public function getRegistered(): DateTimeType
+	{
+		return $this->registered;
+	}
+
+
+	/**
+	 * @return string
+	 */
+	public function getUsername(): string
+	{
+		return $this->username;
+	}
+
+
+	/**
+	 * @param string $username
+	 */
+	public function setUsername(string $username)
+	{
+		$this->username = $username;
+	}
+
+	/**
+	 * @return Role
+	 */
+	public function getRole() : Role
+	{
+		return $this->role;
+	}
+
+
+	/**
+	 * @param Role $role
+	 */
+	public function setRole(Role $role)
+	{
+		$this->role = $role;
 	}
 }

@@ -32,7 +32,7 @@ abstract class BaseModel
 	 * @param array $foreignKeys
 	 * @return Entity
 	 */
-	public function mapArrayToEntity(Entity $entity, array $values, array $foreignKeys) : Entity
+	public function mapArrayToEntity(Entity $entity, array $values, array $foreignKeys = []) : Entity
 	{
 		foreach ($values as $key => $value) {
 			if (array_key_exists($key, $foreignKeys)) {

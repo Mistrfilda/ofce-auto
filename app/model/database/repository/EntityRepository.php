@@ -49,4 +49,24 @@ abstract class EntityRepository extends DoctrineEntityRepository
 		return $entity;
 	}
 
+
+	/**
+	 * @param $key
+	 * @param $value
+	 * @return mixed
+	 * @throws AppException
+	 */
+	public function getByKey($key, $value) : Entity
+	{
+		$entity = $this->findOneBy([
+			$key => $value
+		]);
+
+		if ($entity === NULL) {
+			throw new AppException(ErrorCodes::UNKNOWN_ENTITY);
+		}
+
+		return $entity;
+	}
+
 }

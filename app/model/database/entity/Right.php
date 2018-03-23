@@ -7,12 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinTable;
+use Nette\Security\Passwords;
 use Nettrine\ORM\Entity\Attributes\Id;
 
 /**
- * @ORM\Entity(repositoryClass="App\Model\Database\Repository\UserGroupRepository")
+ * @ORM\Entity(repositoryClass="App\Model\Database\Repository\RightRepository")
  */
-class UserGroup extends Entity
+class Right extends Entity
 {
 	use Id;
 
@@ -29,22 +30,11 @@ class UserGroup extends Entity
 	private $description;
 
 	/**
-	 * @var Entity
-	 * @ORM\OneToOne(targetEntity="User")
-	 * @ORM\JoinColumn(nullable=TRUE, name="creation_user_id")
+	 * @var Role[]|Collection
+	 * @ORM\ManyToMany(targetEntity="Role", inversedBy="rights")
+	 * @JoinTable(name="roles_rights")
 	 */
-	private $createdBy;
-
-	/**
-	 * @var User[]|Collection
-	 * @ORM\ManyToMany(targetEntity="User", mappedBy="userGroups")
-	 */
-	private $users;
-
-	public function __construct()
-	{
-		$this->users = new ArrayCollection();
-	}
+	private $roles;
 
 
 	/**
@@ -84,10 +74,19 @@ class UserGroup extends Entity
 
 
 	/**
-	 * @return User[]|Collection
+	 * @return Role[]|Collection
 	 */
-	public function getUsers()
+	public function getRoles()
 	{
-		return $this->users;
+		return $this->roles;
+	}
+
+
+	/**
+	 * @param Role $role
+	 */
+	public function setRoles(Role $role)
+	{
+		$this->roles->add($role);
 	}
 }

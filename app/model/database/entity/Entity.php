@@ -7,4 +7,7 @@ namespace App\Model\Database\Entity;
  */
 abstract class Entity
 {
+	public function getId() : int
+	{
+	}
 }

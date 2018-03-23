@@ -5,12 +5,15 @@ namespace App\Model;
 
 
 use App\Model\Database\Entity\Entity;
+use App\Model\Database\Entity\Role;
 use App\Model\Database\Entity\User;
 use App\Model\Database\Entity\UserGroup;
+use App\Model\Database\Repository\UserRepository;
 
 
 class UserModel extends BaseModel implements IModel
 {
+	/** @var  UserRepository */
 	private $userRepository;
 
 	protected function setRepositories()
@@ -18,11 +21,18 @@ class UserModel extends BaseModel implements IModel
 		$this->userRepository = $this->entityManager->getUserRepository();
 	}
 
+
+	/**
+	 * @param array $data
+	 * @param int|NULL $id
+	 * @return Entity
+	 */
 	public function update(array $data, int $id = NULL) : Entity
 	{
 		/** @var User $user */
 		$user = $this->mapArrayToEntity($id === NULL ? new User() : $this->userRepository->find($id), $data, [
-			'user_groups' => [UserGroup::class, 'UserGroup']
+			'user_groups' => [UserGroup::class, 'UserGroup'],
+			'role' => [Role::class, 'Role']
 		]);
 
 		$this->entityManager->persist($user);
@@ -38,5 +48,15 @@ class UserModel extends BaseModel implements IModel
 	public function getData(int $id) : User
 	{
 		return $this->userRepository->getById($id);
+	}
+
+
+	/**
+	 * @param string $login
+	 * @return User
+	 */
+	public function getByLogin(string $login) : User
+	{
+		return $this->userRepository->getByKey('username', $login);
 	}
 }

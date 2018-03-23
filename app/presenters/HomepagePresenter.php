@@ -4,6 +4,8 @@ namespace App\Presenters;
 
 use App\Components\Forms\Group\EditGroupFormFactory;
 use App\Components\Forms\Group\EditUserGroupFormFactory;
+use App\Components\Forms\Login\LoginFormFactory;
+use App\Components\Forms\Role\EditRoleFormFactory;
 use App\Components\Forms\User\EditUserFormFactory;
 use App\Components\Grids\AppGrid;
 use Nette;
@@ -15,10 +17,16 @@ class HomepagePresenter extends BasePresenter
 
 	private $editUserFormFactory;
 
-	public function __construct(EditUserGroupFormFactory $editUserGroupFormFactory, EditUserFormFactory $editUserFormFactory)
+	private $editRoleFormFactory;
+
+	private $loginFormFactory;
+
+	public function __construct(EditUserGroupFormFactory $editUserGroupFormFactory, EditUserFormFactory $editUserFormFactory, EditRoleFormFactory $editRoleFormFactory, LoginFormFactory $loginFormFactory)
 	{
 		$this->editUserGroupFormFactory = $editUserGroupFormFactory;
 		$this->editUserFormFactory = $editUserFormFactory;
+		$this->editRoleFormFactory = $editRoleFormFactory;
+		$this->loginFormFactory = $loginFormFactory;
 	}
 
 	public function createComponentEditUserForm($name)
@@ -34,6 +42,19 @@ class HomepagePresenter extends BasePresenter
 		$control->setId($this->getParameter('id'));
 		return $control;
 	}
+
+	public function createComponentEditRoleFormFactory($name)
+	{
+		$control = $this->editRoleFormFactory->create();
+		$control->setId($this->getParameter('id'));
+		return $control;
+	}
+
+	public function createComponentLoginForm($name)
+	{
+		return $this->loginFormFactory->create();
+	}
+
 
 	public function createComponentGrid($name)
 	{

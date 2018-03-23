@@ -3,16 +3,18 @@
 
 namespace App\Model\Database\Entity;
 
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinTable;
+use Nette\Security\Passwords;
 use Nettrine\ORM\Entity\Attributes\Id;
 
 /**
- * @ORM\Entity(repositoryClass="App\Model\Database\Repository\UserGroupRepository")
+ * @ORM\Entity(repositoryClass="App\Model\Database\Repository\RoleRepository")
  */
-class UserGroup extends Entity
+class Role extends Entity
 {
 	use Id;
 
@@ -29,22 +31,16 @@ class UserGroup extends Entity
 	private $description;
 
 	/**
-	 * @var Entity
-	 * @ORM\OneToOne(targetEntity="User")
-	 * @ORM\JoinColumn(nullable=TRUE, name="creation_user_id")
-	 */
-	private $createdBy;
-
-	/**
 	 * @var User[]|Collection
-	 * @ORM\ManyToMany(targetEntity="User", mappedBy="userGroups")
+	 * @ORM\ManyToOne(targetEntity="User", mappedBy="role")
 	 */
 	private $users;
 
-	public function __construct()
-	{
-		$this->users = new ArrayCollection();
-	}
+	/**
+	 * @var User[]|Collection
+	 * @ORM\ManyToMany(targetEntity="Right", mappedBy="roles")
+	 */
+	private $rights;
 
 
 	/**
@@ -89,5 +85,32 @@ class UserGroup extends Entity
 	public function getUsers()
 	{
 		return $this->users;
+	}
+
+
+	/**
+	 * @param User[]|Collection $users
+	 */
+	public function setUsers($users)
+	{
+		$this->users = $users;
+	}
+
+
+	/**
+	 * @return User[]|Collection
+	 */
+	public function getRights()
+	{
+		return $this->rights;
+	}
+
+
+	/**
+	 * @param User[]|Collection $rights
+	 */
+	public function setRights($rights)
+	{
+		$this->rights = $rights;
 	}
 }

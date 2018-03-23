@@ -46,10 +46,15 @@ session:
 
 
 services:
+	authenticator: App\Auth\Authenticator
+	authentizator: App\Auth\Authorizator
+
 	##COMPONENTS - FORMS
 	- App\Components\Forms\FormFactory
 	- App\Components\Forms\Group\EditUserGroupFormFactory
 	- App\Components\Forms\User\EditUserFormFactory
+	- App\Components\Forms\Login\LoginFormFactory
+	- App\Components\Forms\Role\EditRoleFormFactory
 
 	##COMPONENTS - GRIDS
 	- App\Components\Grids\GridFactory
@@ -57,6 +62,8 @@ services:
 	##MODELS
 	- App\Model\UserGroupModel
 	- App\Model\UserModel
+	- App\Model\RoleModel
+	- App\Model\RightModel
 
 	##CONSOLE
 	- App\Console\TestCommand

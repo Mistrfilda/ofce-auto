@@ -1,3 +1,24 @@
 {block content}
-	aaa
+	<div class="row">
+		<div class="col-md-6">{control editGroupForm}</div>
+		<div class="col-md-6">{control editUserForm}</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			{control grid}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			{control editRoleFormFactory}
+		</div>
+		<div class="col-md-6">
+			{control loginForm}
+		</div>
+	</div>
+	<div class="row">
+		<form>
+			<input type="text" class="datetime-picker">
+		</form>
+	</div>
 {/block}
