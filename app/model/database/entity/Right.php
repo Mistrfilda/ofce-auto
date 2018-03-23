@@ -8,10 +8,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinTable;
 use Nette\Security\Passwords;
+use Doctrine\ORM\Mapping\Table;
 use Nettrine\ORM\Entity\Attributes\Id;
 
 /**
  * @ORM\Entity(repositoryClass="App\Model\Database\Repository\RightRepository")
+ * @Table(name="app_right")
  */
 class Right extends Entity
 {
@@ -30,12 +32,27 @@ class Right extends Entity
 	private $description;
 
 	/**
+	 * @ORM\Column(type="integer", nullable=false, name="app_id")
+	 * @var int
+	 */
+	private $appId;
+
+	/**
 	 * @var Role[]|Collection
 	 * @ORM\ManyToMany(targetEntity="Role", inversedBy="rights")
 	 * @JoinTable(name="roles_rights")
 	 */
 	private $roles;
 
+	public function setAppId(int $id)
+	{
+		$this->appId = $id;
+	}
+
+	public function getAppId() : int
+	{
+		return $this->appId;
+	}
 
 	/**
 	 * @return string

@@ -32,7 +32,7 @@ class Role extends Entity
 
 	/**
 	 * @var User[]|Collection
-	 * @ORM\ManyToOne(targetEntity="User", mappedBy="role")
+	 * @ORM\ManyToOne(targetEntity="User", inversedBy="role")
 	 */
 	private $users;
 
