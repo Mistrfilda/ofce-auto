@@ -41,7 +41,7 @@ class EditUserForm extends BaseForm
 		$form->addText('name', 'Name')->setRequired();
 		$form->addText('username', 'Username')->setRequired();
 		$form->addText('email', 'Email')->setRequired();
-		$form->addPassword('password', 'Password')->setRequired();
+		$form->addPassword('password', 'Password');
 		$form->addMultiSelect('user_groups', 'User groups', $this->userGroupModel->getPairs());
 		$form->addSelect('role', 'User role', $this->roleModel->getPairs())->setRequired();
 		$form->onSuccess[] = [$this, 'editUserFormSucceed'];
@@ -52,5 +52,6 @@ class EditUserForm extends BaseForm
 	public function editUserFormSucceed($form, $values)
 	{
 		$this->userModel->update((array)$values, $this->id);
+		$this->getPresenter()->redirect('System:users');
 	}
 }

@@ -21,7 +21,7 @@ class EditUserGroupForm extends BaseForm
 	public function render()
 	{
 		if ($this->id !== NULL) {
-			$userGroup = $this->groupModel->getData($this->id);
+			$this['editGroupForm']->setDefaults($this->groupModel->getData($this->id));
 		}
 
 		$this->getTemplate()->setFile(str_replace('.php', '.latte', __FILE__));
@@ -40,6 +40,8 @@ class EditUserGroupForm extends BaseForm
 
 	public function editGroupFormSucceed($form, $values)
 	{
+		$values['createdBy'] = $this->user->getId();
 		$this->groupModel->update((array)$values, $this->id);
+		$this->getPresenter()->redirect('users');
 	}
 }

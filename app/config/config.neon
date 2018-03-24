@@ -68,6 +68,11 @@ services:
 
 	##COMPONENTS - GRIDS
 	- App\Components\Grids\GridFactory
+	- App\Components\Grids\Users\UsersGridFactory
+	- App\Components\Grids\UserGroups\UserGroupsGridFactory
+
+	##COMPONENTS - OTHER
+	- App\Components\Other\Menu\MenuControlFactory
 
 	##MODELS
 	- App\Model\UserGroupModel

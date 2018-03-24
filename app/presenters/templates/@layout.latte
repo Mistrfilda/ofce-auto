@@ -3,9 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-
-	<title>{ifset title}{include title|stripHtml} | {/ifset}OFCE AUTO/title>
-
 	<title>OFCE AUTO</title>
 	<link href="{$basePath}/assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="{$basePath}/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -23,6 +20,8 @@
 		  href="{$basePath}/assets/bower_components/ublaboo-datagrid/assets/dist/datagrid-spinners.css">
 	<link rel="stylesheet" type="text/css"
 		  href="{$basePath}/assets/bower_components/bootstrap-select/dist/css/bootstrap-select.css">
+	<link rel="stylesheet" href="{$basePath}/assets/css/custom.css">
+
 </head>
 
 <body>
@@ -46,21 +45,7 @@
 	<nav class="navbar-default navbar-static-side" role="navigation">
 		<div class="sidebar-collapse">
 			<ul class="nav metismenu" id="side-menu">
-				<li class="nav-header">
-					<div class="dropdown profile-element">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong
-											class="font-bold">{$loggedUser->getName()}</strong>
-                             </span> <span class="text-muted text-xs block">{$loggedUser->getRole()->getName()}<b
-											class="caret"></b></span> </span> </a>
-						<ul class="dropdown-menu animated fadeInRight m-t-xs">
-							<li><a n:href="logout!">Logout</a></li>
-						</ul>
-					</div>
-					<div class="logo-element">
-						IN+
-					</div>
-				</li>
+				{control menuControl}
 				{dump $menu}
 				{dump $presenter}
 				{foreach $menu as $key => $menuItem}
@@ -109,9 +94,22 @@
 
 			</nav>
 		</div>
+
+		{ifset header}
+		<div class="row wrapper border-bottom white-bg page-heading">
+			<div class="col-md-12">
+				{include header}
+			</div>
+		</div>
+		{/ifset}
+
+		{ifset content}
 		<div class="wrapper wrapper-content animated fadeInRight container">
 			{include content}
 		</div>
+		{/ifset}
+
+		{ifset plainContent}{include plainContent}{/ifset}
 		{*<div class="footer">*}
 			{*<div class="pull-right">*}
 			{*</div>*}

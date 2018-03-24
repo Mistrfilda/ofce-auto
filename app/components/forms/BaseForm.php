@@ -9,6 +9,7 @@ use Nette\Application\UI\Control;
 use Nette\Forms\Controls\Button;
 use Nette\Forms\Controls\MultiSelectBox;
 use Nette\Security\Passwords;
+use Nette\Security\User;
 use Nette\Utils\Strings;
 
 
@@ -22,6 +23,14 @@ abstract class BaseForm extends Control
 	public function injectFormFactory(FormFactory $formFactory)
 	{
 		$this->formFactory = $formFactory;
+	}
+
+	/** @var  User */
+	protected $user;
+
+	public function injectUser(User $user)
+	{
+		$this->user = $user;
 	}
 
 

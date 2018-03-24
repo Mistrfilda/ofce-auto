@@ -1,2 +1,27 @@
-{block content}
+{block plainContent}
+	<div class="row wrapper border-bottom white-bg page-heading">
+		<div class="col-md-12">
+			<h1>Users</h1>
+		</div>
+	</div>
+
+	<div class="wrapper wrapper-content animated fadeInRight container">
+		<div class="col-md-12">
+			<a n:href="editUser" class="btn btn-primary grid-button">New user</a>
+			{control usersGrid}
+		</div>
+	</div>
+
+	<div class="row wrapper border-bottom white-bg page-heading">
+		<div class="col-md-12">
+			<h1>Groups</h1>
+		</div>
+	</div>
+
+	<div class="wrapper wrapper-content animated fadeInRight container">
+		<div class="col-md-12">
+			<a n:href="editUserGroup" class="btn btn-primary grid-button">New user group</a>
+			{control userGroupsGrid}
+		</div>
+	</div>
 {/block}

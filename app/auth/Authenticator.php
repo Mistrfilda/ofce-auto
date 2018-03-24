@@ -35,12 +35,13 @@ class Authenticator implements IAuthenticator
 			throw $e;
 		}
 
+
 		if (!Passwords::verify($password, $user->getPassword())) {
 			throw new AppException(ErrorCodes::UNKNOWN_LOGIN);
 		}
 
 
 		//use id for role aswell (in authorizator get actual role)
-		return new Identity($user->getId(), $user->getRole()->getId());
+		return new Identity($user->getId(), $user->getId());
 	}
 }

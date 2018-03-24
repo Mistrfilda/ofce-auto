@@ -4,11 +4,28 @@
 namespace App\Presenters;
 
 
+use App\Components\Other\Menu\MenuControlFactory;
 use Nette\Application\UI\Presenter;
 
 
 abstract class BasePresenter extends Presenter
 {
+	/** @var  MenuControlFactory */
+	private $menuControlFactory;
+
+	public function injectMenuControl(MenuControlFactory $menuControlFactory)
+	{
+		$this->menuControlFactory = $menuControlFactory;
+	}
+
+	public function createComponentMenuControl($name)
+	{
+		$control = $this->menuControlFactory->create();
+		$control->setUserId($this->getUser()->getId());
+		return $control;
+	}
+
+
 	public function startup()
 	{
 		parent::startup();

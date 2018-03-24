@@ -13,13 +13,6 @@ use Nette\Security\User;
 
 class LoginForm extends BaseForm
 {
-	private $user;
-
-	public function __construct(User $user)
-	{
-		$this->user = $user;
-	}
-
 	public function render()
 	{
 		$this->getTemplate()->setFile(str_replace('.php', '.latte', __FILE__));
