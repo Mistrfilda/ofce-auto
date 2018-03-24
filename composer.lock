@@ -979,16 +979,16 @@
         },
         {
             "name": "nette/caching",
-            "version": "v2.5.6",
+            "version": "v2.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/caching.git",
-                "reference": "1231735b5135ca02bd381b70482c052d2a90bdc9"
+                "reference": "7fba7c7ab2585fafb7b31152f2595e1551120555"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/caching/zipball/1231735b5135ca02bd381b70482c052d2a90bdc9",
-                "reference": "1231735b5135ca02bd381b70482c052d2a90bdc9",
+                "url": "https://api.github.com/repos/nette/caching/zipball/7fba7c7ab2585fafb7b31152f2595e1551120555",
+                "reference": "7fba7c7ab2585fafb7b31152f2595e1551120555",
                 "shasum": ""
             },
             "require": {
@@ -1044,7 +1044,7 @@
                 "nette",
                 "sqlite"
             ],
-            "time": "2017-08-30T12:12:25+00:00"
+            "time": "2018-03-21T11:04:32+00:00"
         },
         {
             "name": "nette/component-model",
@@ -1897,12 +1897,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nettrine/dbal.git",
-                "reference": "5341e737516d716e5c72852093e1c5ba564deb82"
+                "reference": "53da1338848aae58fc1115d11782c1782f634eae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nettrine/dbal/zipball/5341e737516d716e5c72852093e1c5ba564deb82",
-                "reference": "5341e737516d716e5c72852093e1c5ba564deb82",
+                "url": "https://api.github.com/repos/nettrine/dbal/zipball/53da1338848aae58fc1115d11782c1782f634eae",
+                "reference": "53da1338848aae58fc1115d11782c1782f634eae",
                 "shasum": ""
             },
             "require": {
@@ -1945,7 +1945,7 @@
                 "doctrine",
                 "nette"
             ],
-            "time": "2018-03-06T10:21:52+00:00"
+            "time": "2018-03-19T19:45:49+00:00"
         },
         {
             "name": "nettrine/migrations",
@@ -2012,12 +2012,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nettrine/orm.git",
-                "reference": "bd4c2254887ee535995970e26e8baf3b4cd85b7c"
+                "reference": "16a2e94040919f14441925348f8f98a5caadca81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nettrine/orm/zipball/bd4c2254887ee535995970e26e8baf3b4cd85b7c",
-                "reference": "bd4c2254887ee535995970e26e8baf3b4cd85b7c",
+                "url": "https://api.github.com/repos/nettrine/orm/zipball/16a2e94040919f14441925348f8f98a5caadca81",
+                "reference": "16a2e94040919f14441925348f8f98a5caadca81",
                 "shasum": ""
             },
             "require": {
@@ -2062,7 +2062,7 @@
                 "nette",
                 "orm"
             ],
-            "time": "2018-03-18T21:33:47+00:00"
+            "time": "2018-03-19T19:32:44+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -2645,16 +2645,16 @@
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.4.12",
+            "version": "v2.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "4182ce7b92f67002509b7fa2fc34bd84deea0b24"
+                "reference": "ead5141731a21cfd0710b092351d923549d2b2ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/4182ce7b92f67002509b7fa2fc34bd84deea0b24",
-                "reference": "4182ce7b92f67002509b7fa2fc34bd84deea0b24",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/ead5141731a21cfd0710b092351d923549d2b2ad",
+                "reference": "ead5141731a21cfd0710b092351d923549d2b2ad",
                 "shasum": ""
             },
             "require": {
@@ -2706,7 +2706,7 @@
                 "nette",
                 "profiler"
             ],
-            "time": "2018-02-28T00:49:47+00:00"
+            "time": "2018-03-23T17:15:58+00:00"
         },
         {
             "name": "ublaboo/datagrid",
