@@ -23,9 +23,9 @@ console:
 dbal:
  	debug: %debugMode%
  	configuration:
- 		sqlLogger: NULL
- 		resultCacheImpl: NULL
- 		filterSchemaAssetsExpression: NULL
+ 		sqlLogger: @tracyDumpLogger
+# 		resultCacheImpl: NULL
+# 		filterSchemaAssetsExpression: NULL
  		autoCommit: TRUE
 
 application:
@@ -50,6 +50,9 @@ session:
 services:
 	authenticator: App\Auth\Authenticator
 	authentizator: App\Auth\Authorizator
+
+	tracyDumpLogger:
+		class: Nettrine\DBAL\Logger\TracyDumpLogger
 
 	##COMPONENTS - FORMS
 	- App\Components\Forms\FormFactory
