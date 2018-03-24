@@ -38,9 +38,16 @@ class Role extends Entity
 
 	/**
 	 * @var User[]|Collection
-	 * @ORM\ManyToMany(targetEntity="Right", mappedBy="roles")
+	 * @ORM\ManyToMany(targetEntity="Right", inversedBy="roles")
+	 * @JoinTable(name="roles_rights")
 	 */
 	private $rights;
+
+
+	public function __construct()
+	{
+		$this->rights = new ArrayCollection();
+	}
 
 
 	/**

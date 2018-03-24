@@ -25,6 +25,7 @@ class RightsForm extends BaseForm
 
 	public function render()
 	{
+		$this['rightForm']->setDefaults($this->roleModel->getRolesRights());
 		$this->getTemplate()->roles = $this->roleModel->getPairs();
 		$this->getTemplate()->setFile(str_replace('.php', '.latte', __FILE__));
 		$this->getTemplate()->render();
@@ -51,7 +52,8 @@ class RightsForm extends BaseForm
 
 	public function rightsFormSucceed(Form $form, array $values)
 	{
-		dump($values);
-		die();
+		foreach ($values as $role => $rights) {
+			$this->roleModel->setRoleRights($role, $rights);
+		}
 	}
 }

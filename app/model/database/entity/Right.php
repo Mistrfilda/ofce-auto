@@ -14,11 +14,17 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
  * @ORM\Entity(repositoryClass="App\Model\Database\Repository\RightRepository")
- * @Table(name="app_right", uniqueConstraints={@UniqueConstraint(name="appId", columns={"app_id"})})
+ * @Table(name="app_right")
  */
 class Right extends Entity
 {
-	use Id;
+	/**
+	 * @var int
+	 * @ORM\Column(type="integer", nullable=FALSE)
+	 * @ORM\Id
+	 */
+	private $id;
+
 
 	/**
 	 * @ORM\Column(type="string")
@@ -32,27 +38,24 @@ class Right extends Entity
 	 */
 	private $description;
 
-	/**
-	 * @ORM\Column(type="integer", nullable=false, name="app_id")
-	 * @var int
-	 */
-	private $appId;
 
 	/**
 	 * @var Role[]|Collection
-	 * @ORM\ManyToMany(targetEntity="Role", inversedBy="rights")
-	 * @JoinTable(name="roles_rights")
+	 * @ORM\ManyToMany(targetEntity="Role", mappedBy="rights")
 	 */
 	private $roles;
 
-	public function setAppId(int $id)
+	/**
+	 * @return int
+	 */
+	public function getId(): int
 	{
-		$this->appId = $id;
+		return $this->id;
 	}
 
-	public function getAppId() : int
+	public function setId(int $id)
 	{
-		return $this->appId;
+		$this->id = $id;
 	}
 
 	/**

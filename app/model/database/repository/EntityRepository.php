@@ -68,5 +68,4 @@ abstract class EntityRepository extends DoctrineEntityRepository
 
 		return $entity;
 	}
-
 }

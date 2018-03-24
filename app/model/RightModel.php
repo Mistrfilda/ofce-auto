@@ -23,7 +23,7 @@ class RightModel extends BaseModel
 
 	public function getPairs()
 	{
-		return $this->rightRepository->findPairs('name', 'appId');
+		return $this->rightRepository->findPairs('name', 'id');
 	}
 
 	public function updateRights()
@@ -34,13 +34,12 @@ class RightModel extends BaseModel
 		foreach ($rights->getConstants() as $name => $id) {
 			if (!array_key_exists($id, $pairs)) {
 				$right = new Right();
-				$right->setAppId($id);
+				$right->setId($id);
 				$right->setName($name);
 				$this->entityManager->persist($right);
 			}
 		}
 
 		$this->entityManager->flush();
-
 	}
 }
