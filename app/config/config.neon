@@ -33,6 +33,9 @@ application:
 	mapping:
 		*: App\*Module\Presenters\*Presenter
 
+tracy:
+	editor: 'phpstorm://open?file=%file&line=%line'
+
 decorator:
 	App\Components\Forms\BaseForm:
 		inject: on

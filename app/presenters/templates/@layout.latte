@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
-	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
+	<title>{ifset title}{include title|stripHtml} | {/ifset}OFCE AUTO/title>
 
 	<title>OFCE AUTO</title>
 	<link href="{$basePath}/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -50,8 +50,8 @@
 					<div class="dropdown profile-element">
 						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong
-											class="font-bold">David Williams</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b
+											class="font-bold">{$loggedUser->getName()}</strong>
+                             </span> <span class="text-muted text-xs block">{$loggedUser->getRole()->getName()}<b
 											class="caret"></b></span> </span> </a>
 						<ul class="dropdown-menu animated fadeInRight m-t-xs">
 							<li><a n:href="logout!">Logout</a></li>
