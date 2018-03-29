@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types = 1);
 
 
 namespace App\Components\Forms\Role;
 
 
 use App\Components\Forms\BaseForm;
-use App\Model\RoleModel;
+use App\Model\Facade\RoleModel;
 
 
 class EditRoleForm extends BaseForm

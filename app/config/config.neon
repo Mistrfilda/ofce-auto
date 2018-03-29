@@ -39,11 +39,9 @@ tracy:
 decorator:
 	App\Components\Forms\BaseForm:
 		inject: on
-	App\Model\BaseModel:
+	App\Model\Facade\BaseModel:
 		inject: on
 	App\Components\Grids\BaseGrid:
-		inject: on
-	App\Model\Facade\Facade:
 		inject: on
 
 session:
@@ -74,15 +72,14 @@ services:
 	##COMPONENTS - OTHER
 	- App\Components\Other\Menu\MenuControlFactory
 
-	##MODELS
-	- App\Model\UserGroupModel
-	- App\Model\UserModel
-	- App\Model\RoleModel
-	- App\Model\RightModel
-	- App\Model\RegistrationTokenModel
 
 	##FACADE
-	- App\Model\Facade\RegistrationFacade
+	- App\Model\Facade\RegistrationModel
+	- App\Model\Facade\UserGroupModel
+	- App\Model\Facade\UserModel
+	- App\Model\Facade\RoleModel
+	- App\Model\Facade\RightModel
+	- App\Model\Facade\RegistrationTokenModel
 
 	##CONSOLE
 	- App\Console\UpdateRightsCommand

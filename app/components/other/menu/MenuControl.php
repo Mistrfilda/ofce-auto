@@ -4,7 +4,7 @@
 namespace App\Components\Other\Menu;
 
 
-use App\Model\UserModel;
+use App\Model\Facade\UserModel;
 use Nette\Application\UI\Control;
 
 

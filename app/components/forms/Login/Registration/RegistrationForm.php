@@ -1,11 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 
 namespace App\Components\Forms\Login;
 
 
 use App\Components\Forms\BaseForm;
-use App\Model\Database\Entity\User;
 use App\Model\Facade\RegistrationModel;
 use Nette\Forms\Form;
 

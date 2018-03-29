@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 
 namespace App\Components\Forms\Rights;
@@ -6,8 +6,8 @@ namespace App\Components\Forms\Rights;
 
 use App\Components\Forms\BaseForm;
 use App\Model\Database\Entity\Role;
-use App\Model\RightModel;
-use App\Model\RoleModel;
+use App\Model\Facade\RightModel;
+use App\Model\Facade\RoleModel;
 use Nette\Forms\Form;
 
 

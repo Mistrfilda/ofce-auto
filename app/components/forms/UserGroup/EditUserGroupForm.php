@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types = 1);
 
 
 namespace App\Components\Forms\UserGroup;
 
 
 use App\Components\Forms\BaseForm;
-use App\Model\UserGroupModel;
+use App\Model\Facade\UserGroupModel;
 use Nette\Application\UI\Form;
 
 

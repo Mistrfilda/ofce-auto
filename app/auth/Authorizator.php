@@ -5,8 +5,8 @@ namespace App\Auth;
 
 
 use App\Model\Database\Entity\User;
-use App\Model\RoleModel;
-use App\Model\UserModel;
+use App\Model\Facade\RoleModel;
+use App\Model\Facade\UserModel;
 use Nette\Security\IAuthorizator;
 
 

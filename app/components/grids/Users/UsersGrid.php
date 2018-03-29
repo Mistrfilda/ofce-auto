@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types = 1);
 
 
 namespace App\Components\Grids\Users;
 
 
 use App\Components\Grids\BaseGrid;
-use App\Model\UserModel;
+use App\Model\Facade\UserModel;
 
 
 class UsersGrid extends BaseGrid

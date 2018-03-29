@@ -6,7 +6,7 @@ namespace App\Auth;
 
 use App\Lib\AppException;
 use App\Lib\ErrorCodes;
-use App\Model\UserModel;
+use App\Model\Facade\UserModel;
 use Nette\Security\IAuthenticator;
 use Nette\Security\Identity;
 use Nette\Security\Passwords;
