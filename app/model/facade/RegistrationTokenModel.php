@@ -1,7 +1,7 @@
-<?php
+<?php declare(strict_types = 1);
 
 
-namespace App\Model;
+namespace App\Model\Facade;
 
 
 use App\Model\Database\Entity\RegistrationToken;

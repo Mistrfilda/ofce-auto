@@ -1,17 +1,17 @@
-<?php
+<?php declare(strict_types = 1);
 
 
 namespace App\Model\Facade;
 
 
 use App\Lib\AppException;
-use App\Model\BaseModel;
+use App\Model\Facade\BaseModel;
 use App\Model\Database\Entity\RegistrationToken;
 use App\Model\Database\Entity\User;
-use App\Model\RegistrationTokenModel;
-use App\Model\RoleModel;
-use App\Model\UserGroupModel;
-use App\Model\UserModel;
+use App\Model\Facade\RegistrationTokenModel;
+use App\Model\Facade\RoleModel;
+use App\Model\Facade\UserGroupModel;
+use App\Model\Facade\UserModel;
 use Nette\Utils\Random;
 use Nette\Utils\Strings;
 
