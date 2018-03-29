@@ -90,4 +90,22 @@ class UserGroup extends Entity
 	{
 		return $this->users;
 	}
+
+
+	/**
+	 * @return null|Entity
+	 */
+	public function getCreatedBy(): ?Entity
+	{
+		return $this->createdBy;
+	}
+
+
+	/**
+	 * @param Entity $createdBy
+	 */
+	public function setCreatedBy(Entity $createdBy)
+	{
+		$this->createdBy = $createdBy;
+	}
 }

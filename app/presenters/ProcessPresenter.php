@@ -6,7 +6,7 @@ namespace App\Presenters;
 
 use App\Lib\AppException;
 use App\Lib\ErrorCodes;
-use App\Model\Facade\RegistrationFacade;
+use App\Model\Facade\RegistrationModel;
 use Nette\Application\BadRequestException;
 
 
@@ -14,7 +14,7 @@ class ProcessPresenter extends BasePresenter
 {
 	private $registrationFacade;
 
-	public function __construct(RegistrationFacade $registrationFacade)
+	public function __construct(RegistrationModel $registrationFacade)
 	{
 		$this->registrationFacade = $registrationFacade;
 	}

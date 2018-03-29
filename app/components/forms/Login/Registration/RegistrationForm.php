@@ -6,7 +6,7 @@ namespace App\Components\Forms\Login;
 
 use App\Components\Forms\BaseForm;
 use App\Model\Database\Entity\User;
-use App\Model\Facade\RegistrationFacade;
+use App\Model\Facade\RegistrationModel;
 use Nette\Forms\Form;
 
 
@@ -14,7 +14,7 @@ class RegistrationForm extends BaseForm
 {
 	private $registrationFacade;
 
-	public function __construct(RegistrationFacade $registrationFacade)
+	public function __construct(RegistrationModel $registrationFacade)
 	{
 		$this->registrationFacade = $registrationFacade;
 	}

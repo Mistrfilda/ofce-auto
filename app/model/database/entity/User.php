@@ -151,6 +151,14 @@ class User extends Entity
 		$this->userGroups->add($userGroup);
 	}
 
+	/**
+	 * @param array $userGroups
+	 */
+	public function setUserGroups(array $userGroups)
+	{
+		$this->userGroups = new ArrayCollection($userGroups);
+	}
+
 
 	/**
 	 * @return DateTimeType
