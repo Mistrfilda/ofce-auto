@@ -7,6 +7,7 @@ namespace App\Model;
 use App\Model\Database\Entity\Entity;
 use App\Model\Database\Entity\UserGroup;
 use App\Model\Database\Repository\UserGroupRepository;
+use App\Model\Database\Repository\UserRepository;
 
 
 class UserGroupModel extends BaseModel implements IModel
@@ -14,9 +15,13 @@ class UserGroupModel extends BaseModel implements IModel
 	/** @var UserGroupRepository */
 	private $userGroupRepository;
 
+	/** @var  UserRepository */
+	private $userRepository;
+
 	protected function setRepositories()
 	{
 		$this->userGroupRepository = $this->entityManager->getUserGroupRepository();
+		$this->userRepository = $this->entityManager->getUserRepository();
 	}
 
 	/**
@@ -34,6 +39,7 @@ class UserGroupModel extends BaseModel implements IModel
 
 		$group->setName($data['name']);
 		$group->setDescription($data['description']);
+		$group->setCreatedBy($this->userRepository->getById($data['createdBy']));
 		$this->entityManager->persist($group);
 		$this->entityManager->flush();
 		return $group;
@@ -60,5 +66,11 @@ class UserGroupModel extends BaseModel implements IModel
 	public function getByName(string $name) : UserGroup
 	{
 		return $this->userGroupRepository->getByKey('name', $name);
+	}
+
+	public function getQueryBuilder()
+	{
+		$queryBuilder = $this->userGroupRepository->createQueryBuilder('u');
+		return $queryBuilder;
 	}
 }

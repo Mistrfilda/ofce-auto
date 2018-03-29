@@ -5,6 +5,7 @@ namespace App\Model\Facade;
 
 
 use App\Lib\AppException;
+use App\Model\BaseModel;
 use App\Model\Database\Entity\RegistrationToken;
 use App\Model\Database\Entity\User;
 use App\Model\RegistrationTokenModel;
@@ -15,7 +16,7 @@ use Nette\Utils\Random;
 use Nette\Utils\Strings;
 
 
-class RegistrationFacade extends Facade
+class RegistrationModel extends BaseModel
 {
 	private $registrationTokenModel;
 
@@ -36,10 +37,13 @@ class RegistrationFacade extends Facade
 		$this->user = $user;
 	}
 
+	protected function setRepositories()
+	{
+		// TODO: Implement setRepositories() method.
+	}
 
 	public function register(array $data)
 	{
-		$this->entityManager->beginTransaction();
 		$user = new User();
 		$user->setName($data['name']);
 		$user->setPassword($data['password']);
@@ -59,7 +63,6 @@ class RegistrationFacade extends Facade
 		try {
 		 	$this->user->login($user->getUsername(), $data['password']);
 		} catch (AppException $e) {
-			$this->entityManager->rollback();
 			throw $e;
 		}
 	}

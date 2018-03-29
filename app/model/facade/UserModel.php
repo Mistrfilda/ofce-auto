@@ -31,7 +31,7 @@ class UserModel extends BaseModel implements IModel
 	{
 		/** @var User $user */
 		$user = $this->mapArrayToEntity($id === NULL ? new User() : $this->userRepository->find($id), $data, [
-			'user_groups' => [UserGroup::class, 'UserGroup'],
+			'user_groups' => [UserGroup::class, 'UserGroups'],
 			'role' => [Role::class, 'Role']
 		]);
 
@@ -58,5 +58,11 @@ class UserModel extends BaseModel implements IModel
 	public function getByLogin(string $login) : User
 	{
 		return $this->userRepository->getByKey('username', $login);
+	}
+
+	public function getQueryBuilder()
+	{
+		$queryBuilder = $this->userRepository->createQueryBuilder('u');
+		return $queryBuilder;
 	}
 }

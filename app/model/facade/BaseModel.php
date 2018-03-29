@@ -18,6 +18,7 @@ abstract class BaseModel
 	/** @var EntityManager */
 	protected $entityManager;
 
+
 	public function injectEntityManager(EntityManager $entityManager)
 	{
 		$this->entityManager = $entityManager;
@@ -38,9 +39,11 @@ abstract class BaseModel
 			if (array_key_exists($key, $foreignKeys)) {
 				$method = 'set' . $foreignKeys[$key][1];
 				if (is_array($value)) {
+					$entities = [];
 					foreach ($value as $id) {
-						$entity->$method($this->getReferencedEntity($foreignKeys[$key][0], $id));
+						$entities[] = $this->getReferencedEntity($foreignKeys[$key][0], $id);
 					}
+					$entity->$method($entities);
 				} else {
 					$entity->$method($this->getReferencedEntity($foreignKeys[$key][0], $value));
 				}
