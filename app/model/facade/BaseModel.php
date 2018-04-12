@@ -4,10 +4,9 @@
 namespace App\Model\Facade;
 
 
-use App\Components\Forms\FormFactory;
 use App\Model\Database\Entity\Entity;
-use App\Model\Database\Entity\UserGroup;
 use App\Model\Database\EntityManager;
+use Kdyby\Monolog\Logger;
 use Nette\SmartObject;
 
 
@@ -18,11 +17,17 @@ abstract class BaseModel
 	/** @var EntityManager */
 	protected $entityManager;
 
+	protected $logger;
 
 	public function injectEntityManager(EntityManager $entityManager)
 	{
 		$this->entityManager = $entityManager;
 		$this->setRepositories();
+	}
+
+	public function injectMonologLogger(Logger $logger)
+	{
+		$this->logger = $logger;
 	}
 
 	protected abstract function setRepositories();

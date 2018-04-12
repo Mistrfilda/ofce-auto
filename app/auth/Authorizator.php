@@ -45,6 +45,7 @@ class Authorizator implements IAuthorizator
 
 	private function getUser($id)
 	{
+		//for now cache for 1 request
 		if ($this->user === NULL || $this->user->getId() !== $id) {
 			$this->user = $this->userModel->getData($id);
 		}

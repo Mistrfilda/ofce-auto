@@ -41,6 +41,10 @@ class LoginForm extends BaseForm
 
 			throw $e;
 		}
+
+		$this->logger->channel('login');
+		$this->logger->addInfo('User login', ['username' => $values['username']]);
+
 		if ($this->getPresenter()->getParameter('backlink') !== NULL) {
 			$this->getPresenter()->restoreRequest($this->getPresenter()->getParameter('backlink'));
 		}

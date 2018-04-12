@@ -7,6 +7,13 @@ extensions:
 	orm: Nettrine\ORM\DI\OrmExtension
 	orm.console: Nettrine\ORM\DI\OrmConsoleExtension
 	orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
+	monolog: Kdyby\Monolog\DI\MonologExtension
+
+monolog:
+	name: ofce-auto
+	handlers:
+		fileLog: Monolog\Handler\RotatingFileHandler(%monologDir%, 60)
+
 
 orm.annotations:
     paths:
