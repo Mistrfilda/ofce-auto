@@ -10,6 +10,7 @@ use App\Model\Facade\UserModel;
 use Nette\Security\IAuthenticator;
 use Nette\Security\Identity;
 use Nette\Security\Passwords;
+use Nette\Utils\Strings;
 
 
 class Authenticator implements IAuthenticator
@@ -27,7 +28,7 @@ class Authenticator implements IAuthenticator
 		list($username, $password) = $credentials;
 
 		try {
-			$user = $this->userModel->getByLogin($username);
+			$user = $this->userModel->getByLogin(Strings::lower($username));
 		} catch (AppException $e) {
 			if ($e->getCode() === ErrorCodes::UNKNOWN_ENTITY) {
 				throw new AppException(ErrorCodes::UNKNOWN_LOGIN);

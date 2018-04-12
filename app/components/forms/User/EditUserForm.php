@@ -8,6 +8,7 @@ use App\Components\Forms\BaseForm;
 use App\Model\Facade\RoleModel;
 use App\Model\Facade\UserGroupModel;
 use App\Model\Facade\UserModel;
+use Nette\Utils\Strings;
 
 
 class EditUserForm extends BaseForm
@@ -54,6 +55,8 @@ class EditUserForm extends BaseForm
 		if ($values['password'] === NULL) {
 			unset($values['password']);
 		}
+
+		$values['username'] = Strings::lower($values['username']);
 		$this->userModel->update((array)$values, $this->id);
 		$this->getPresenter()->redirect('System:users');
 	}
