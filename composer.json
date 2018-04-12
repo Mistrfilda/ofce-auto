@@ -24,7 +24,8 @@
 		"nettrine/orm": "dev-master",
 		"nettrine/migrations": "^0.3",
 		"tomaj/nette-bootstrap-form": "^1.3",
-		"ublaboo/datagrid": "^5.5"
+		"ublaboo/datagrid": "^5.5",
+		"kdyby/monolog": "^1.3"
 	},
 	"require-dev": {
 		"nette/tester": "^2.0"
