@@ -41,13 +41,10 @@
 {/foreach}
 
 <div id="wrapper">
-
 	<nav class="navbar-default navbar-static-side" role="navigation">
 		<div class="sidebar-collapse">
 			<ul class="nav metismenu" id="side-menu">
 				{control menuControl}
-				{dump $menu}
-				{dump $presenter}
 				{foreach $menu as $key => $menuItem}
 					<li>
 						{if array_key_exists('submenu', $menuItem)}
@@ -67,7 +64,6 @@
 					</li>
 				{/foreach}
 			</ul>
-
 		</div>
 	</nav>
 

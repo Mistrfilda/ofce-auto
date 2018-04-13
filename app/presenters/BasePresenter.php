@@ -41,6 +41,16 @@ abstract class BasePresenter extends Presenter
 				'icon'  => 'user',
 				'link'  => 'Homepage:Default',
 			],
+			'cars' => [
+				'label' => 'Cars',
+				'icon' => 'car',
+				'link' => 'Car:default'
+			],
+			'calendar' => [
+				'label' => 'Calendar',
+				'icon' => 'calendar',
+				'link' => 'Calendar:default'
+			],
 			'system' => [
 				'label' => 'System',
 				'icon' => 'database',
