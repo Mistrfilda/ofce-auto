@@ -6,7 +6,9 @@ namespace App\Presenters;
 
 use App\Components\Forms\Group\EditUserGroupFormFactory;
 use App\Components\Forms\Rights\RightsFormFactory;
+use App\Components\Forms\Role\EditRoleFormFactory;
 use App\Components\Forms\User\EditUserFormFactory;
+use App\Components\Grids\Roles\RolesGridFactory;
 use App\Components\Grids\UserGroups\UserGroupsGridFactory;
 use App\Components\Grids\Users\UsersGridFactory;
 use App\Lib\Rights;
@@ -25,22 +27,24 @@ class SystemPresenter extends SecurePresenter
 
 	private $editUserGroupFormFactory;
 
-	public function __construct(RightsFormFactory $rightsFormFactory, UsersGridFactory $usersGridFactory, EditUserFormFactory $editUserFormFactory, UserGroupsGridFactory $userGroupsGridFactory, EditUserGroupFormFactory $editUserGroupFormFactory)
+	private $rolesGridFactory;
+
+	private $editRoleFormFactory;
+
+	public function __construct(RightsFormFactory $rightsFormFactory, UsersGridFactory $usersGridFactory, EditUserFormFactory $editUserFormFactory, UserGroupsGridFactory $userGroupsGridFactory, EditUserGroupFormFactory $editUserGroupFormFactory, RolesGridFactory $rolesGridFactory, EditRoleFormFactory $editRoleFormFactory)
 	{
 		$this->rightsFormFactory = $rightsFormFactory;
 		$this->usersGridFactory = $usersGridFactory;
 		$this->editUserFormFactory = $editUserFormFactory;
 		$this->userGroupsGridFactory = $userGroupsGridFactory;
 		$this->editUserGroupFormFactory = $editUserGroupFormFactory;
+		$this->rolesGridFactory = $rolesGridFactory;
+		$this->editRoleFormFactory = $editRoleFormFactory;
 	}
 
 
 	public function renderRights()
 	{
-//		if ($this->getUser()->isAllowed(Rights::SYSTEM)) {
-//			dump('bbb');
-//			die();
-//		}
 	}
 
 	public function createComponentRightsForm()
@@ -72,6 +76,19 @@ class SystemPresenter extends SecurePresenter
 		return $control;
 	}
 
+	public function createComponentRolesGrid($name)
+	{
+		return $this->rolesGridFactory->create();
+	}
+
+	public function createComponentEditRoleForm($name)
+	{
+		$control = $this->editRoleFormFactory->create();
+		$control->setId($this->getParameter('id'));
+		return $control;
+	}
+
+
 	public function renderEditUser(?int $id)
 	{
 
@@ -79,5 +96,11 @@ class SystemPresenter extends SecurePresenter
 
 	public function renderEditUserGroup(?int $id)
 	{
+
+	}
+
+	public function renderEditRole(?int $id)
+	{
+
 	}
 }

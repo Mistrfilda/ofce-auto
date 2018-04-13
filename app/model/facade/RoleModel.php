@@ -6,10 +6,12 @@ namespace App\Model\Facade;
 
 use App\Model\Database\Entity\Entity;
 use App\Model\Database\Entity\Role;
+use App\Model\Database\Entity\User;
 use App\Model\Database\Repository\RightRepository;
 use App\Model\Database\Repository\RoleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Query\ResultSetMapping;
+use Doctrine\ORM\QueryBuilder;
 
 
 class RoleModel extends BaseModel
@@ -29,7 +31,7 @@ class RoleModel extends BaseModel
 	public function update(array $data, int $id = NULL) : Entity
 	{
 		/** @var Role $role */
-		$role = $this->mapArrayToEntity($id === NULL ? new Role() : $this->roleRepository->find($id), $data, []);
+		$role = $this->mapArrayToEntity($id === NULL ? new Role() : $this->roleRepository->find($id), $data, ['createdBy' => [User::class, 'createdBy']]);
 
 		$this->entityManager->persist($role);
 		$this->entityManager->flush();
@@ -90,5 +92,11 @@ class RoleModel extends BaseModel
 		}
 
 		return $rolesRights;
+	}
+
+	public function getQueryBuilder() : QueryBuilder
+	{
+		$queryBuilder = $this->roleRepository->createQueryBuilder('r');
+		return $queryBuilder;
 	}
 }

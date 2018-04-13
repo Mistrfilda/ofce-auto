@@ -41,6 +41,7 @@ application:
 		*: App\*Module\Presenters\*Presenter
 
 tracy:
+	maxDepth: 7
 	editor: 'phpstorm://open?file=%file&line=%line'
 
 decorator:
@@ -75,6 +76,7 @@ services:
 	- App\Components\Grids\GridFactory
 	- App\Components\Grids\Users\UsersGridFactory
 	- App\Components\Grids\UserGroups\UserGroupsGridFactory
+	- App\Components\Grids\Roles\RolesGridFactory
 
 	##COMPONENTS - OTHER
 	- App\Components\Other\Menu\MenuControlFactory

@@ -19,6 +19,10 @@ class EditRoleForm extends BaseForm
 
 	public function render()
 	{
+		if ($this->id !== NULL) {
+			$this->setEntityToForm($this->roleModel->getData($this->id), $this['editRoleForm']);
+		}
+
 		$this->getTemplate()->setFile(str_replace('.php', '.latte', __FILE__));
 		$this->getTemplate()->render();
 	}
@@ -35,6 +39,8 @@ class EditRoleForm extends BaseForm
 
 	public function editRoleFormSucceed($form, $values)
 	{
+		$values['createdBy'] = $this->user->getId();
 		$this->roleModel->update((array)$values, $this->id);
+		$this->getPresenter()->redirect('users');
 	}
 }

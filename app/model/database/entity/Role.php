@@ -31,6 +31,13 @@ class Role extends Entity
 	private $description;
 
 	/**
+	 * @var Entity
+	 * @ORM\OneToOne(targetEntity="User")
+	 * @ORM\JoinColumn(nullable=TRUE, name="creation_user_id")
+	 */
+	private $createdBy;
+
+	/**
 	 * @var User[]|Collection
 	 * @ORM\ManyToOne(targetEntity="User", inversedBy="role")
 	 */
@@ -119,5 +126,22 @@ class Role extends Entity
 	public function setRights($rights)
 	{
 		$this->rights = $rights;
+	}
+
+	/**
+	 * @return null|Entity
+	 */
+	public function getCreatedBy(): ?Entity
+	{
+		return $this->createdBy;
+	}
+
+
+	/**
+	 * @param Entity $createdBy
+	 */
+	public function setCreatedBy(Entity $createdBy)
+	{
+		$this->createdBy = $createdBy;
 	}
 }
