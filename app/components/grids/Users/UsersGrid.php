@@ -4,6 +4,7 @@
 namespace App\Components\Grids\Users;
 
 
+use App\Components\Grids\AppGrid;
 use App\Components\Grids\BaseGrid;
 use App\Model\Facade\UserModel;
 
@@ -23,7 +24,7 @@ class UsersGrid extends BaseGrid
 		$this->getTemplate()->render();
 	}
 
-	public function createComponentUsersGrid($name)
+	public function createComponentUsersGrid($name) : AppGrid
 	{
 		$grid = $this->gridFactory->create();
 		$grid->setDataSource($this->userModel->getQueryBuilder());

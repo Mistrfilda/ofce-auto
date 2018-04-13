@@ -4,6 +4,7 @@
 namespace App\Components\Grids\UserGroups;
 
 
+use App\Components\Grids\AppGrid;
 use App\Components\Grids\BaseGrid;
 use App\Model\Facade\UserGroupModel;
 
@@ -23,13 +24,13 @@ class UserGroupsGrid extends BaseGrid
 		$this->getTemplate()->render();
 	}
 
-	public function createComponentUserGroupsGrid()
+	public function createComponentUserGroupsGrid() : AppGrid
 	{
 		$grid = $this->gridFactory->create();
 		$grid->setDataSource($this->userGroupModel->getQueryBuilder());
 		$grid->addColumnText('name', 'Name');
 		$grid->addColumnText('description', 'Description');
-		$grid->addColumnText('createdBy', 'Created by', 'createdBy.name');
+		$grid->addColumnText('createdBy', 'Created by', 'createdBy.username');
 		$grid->addAction('edit-user', 'Edit user group', 'System:editUserGroup', ['id' => 'id'])
 			->setClass('btn btn-primary')
 			->setIcon('arrow-right');

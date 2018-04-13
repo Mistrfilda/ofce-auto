@@ -21,7 +21,7 @@ class EditUserGroupForm extends BaseForm
 	public function render()
 	{
 		if ($this->id !== NULL) {
-			$this['editGroupForm']->setDefaults($this->groupModel->getData($this->id));
+			$this->setEntityToForm($this->groupModel->getData($this->id), $this['editGroupForm']);
 		}
 
 		$this->getTemplate()->setFile(str_replace('.php', '.latte', __FILE__));

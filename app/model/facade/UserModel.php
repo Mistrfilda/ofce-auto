@@ -9,6 +9,7 @@ use App\Model\Database\Entity\Role;
 use App\Model\Database\Entity\User;
 use App\Model\Database\Entity\UserGroup;
 use App\Model\Database\Repository\UserRepository;
+use Doctrine\ORM\QueryBuilder;
 
 
 class UserModel extends BaseModel implements IModel
@@ -60,7 +61,7 @@ class UserModel extends BaseModel implements IModel
 		return $this->userRepository->getByKey('username', $login);
 	}
 
-	public function getQueryBuilder()
+	public function getQueryBuilder() : QueryBuilder
 	{
 		$queryBuilder = $this->userRepository->createQueryBuilder('u');
 		return $queryBuilder;
