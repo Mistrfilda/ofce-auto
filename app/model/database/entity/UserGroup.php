@@ -44,6 +44,7 @@ class UserGroup extends Entity
 	public function __construct()
 	{
 		$this->users = new ArrayCollection();
+		$this->createdBy = NULL;
 	}
 
 

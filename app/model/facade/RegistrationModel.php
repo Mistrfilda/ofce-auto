@@ -55,6 +55,7 @@ class RegistrationModel extends BaseModel
 		$this->entityManager->persist($registrationToken);
 		$this->entityManager->flush();
 
+		//TODO send token to email
 
 		try {
 		 	$this->user->login($user->getUsername(), $data['password']);
