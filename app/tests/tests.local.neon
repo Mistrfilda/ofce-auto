@@ -1,0 +1,10 @@
+parameters:
+	monologDir: %tempDir%
+
+dbal:
+    connection:
+        host: 127.0.0.1
+        user: xxx
+        password: xxx
+        dbname: ofce_auto_tests
+        driver: mysqli
