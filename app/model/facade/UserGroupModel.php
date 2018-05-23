@@ -39,7 +39,7 @@ class UserGroupModel extends BaseModel implements IModel
 
 		$group->setName($data['name']);
 		$group->setDescription($data['description']);
-		if (array_key_exists('createdBy', $data)) {
+		if (array_key_exists('createdBy', $data) && $id === NULL) {
 			$group->setCreatedBy($this->userRepository->getById($data['createdBy']));
 		}
 		$this->entityManager->persist($group);

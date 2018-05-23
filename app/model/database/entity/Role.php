@@ -32,8 +32,8 @@ class Role extends Entity
 
 	/**
 	 * @var Entity
-	 * @ORM\OneToOne(targetEntity="User")
-	 * @ORM\JoinColumn(nullable=TRUE, name="creation_user_id")
+	 * @ORM\ManyToOne(targetEntity="User")
+	 * @ORM\JoinColumn(nullable=TRUE, name="creation_user_id", unique=FALSE)
 	 */
 	private $createdBy;
 
