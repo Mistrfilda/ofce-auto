@@ -5,21 +5,14 @@ namespace App\Model\Facade;
 
 
 use App\Lib\AppException;
-use App\Model\Facade\BaseModel;
+use App\Model\Database\Repository\RegistrationTokenRepository;
 use App\Model\Database\Entity\RegistrationToken;
 use App\Model\Database\Entity\User;
-use App\Model\Facade\RegistrationTokenModel;
-use App\Model\Facade\RoleModel;
-use App\Model\Facade\UserGroupModel;
-use App\Model\Facade\UserModel;
 use Nette\Utils\Random;
-use Nette\Utils\Strings;
 
 
 class RegistrationModel extends BaseModel
 {
-	private $registrationTokenModel;
-
 	private $userModel;
 
 	private $roleModel;
@@ -28,21 +21,23 @@ class RegistrationModel extends BaseModel
 
 	private $user;
 
-	public function __construct(RegistrationTokenModel $registrationTokenModel, UserModel $userModel, RoleModel $roleModel, UserGroupModel $userGroupModel, \Nette\Security\User $user)
+	/** @var  RegistrationTokenRepository */
+	private $registrationTokenRepository;
+
+	public function __construct(UserModel $userModel, RoleModel $roleModel, UserGroupModel $userGroupModel, \Nette\Security\User $user)
 	{
-		$this->registrationTokenModel = $registrationTokenModel;
 		$this->userModel = $userModel;
 		$this->roleModel = $roleModel;
 		$this->userGroupModel = $userGroupModel;
 		$this->user = $user;
 	}
 
-	protected function setRepositories()
+	protected function setRepositories() : void
 	{
-		// TODO: Implement setRepositories() method.
+		$this->registrationTokenRepository = $this->entityManager->getRegistrationTokenRepository();
 	}
 
-	public function register(array $data)
+	public function register(array $data) : void
 	{
 		$user = new User();
 		$user->setName($data['name']);
@@ -60,6 +55,7 @@ class RegistrationModel extends BaseModel
 		$this->entityManager->persist($registrationToken);
 		$this->entityManager->flush();
 
+
 		try {
 		 	$this->user->login($user->getUsername(), $data['password']);
 		} catch (AppException $e) {
@@ -67,12 +63,17 @@ class RegistrationModel extends BaseModel
 		}
 	}
 
-	public function validateToken(string $token)
+	public function validateToken(string $token) : void
 	{
-		$registrationToken = $this->registrationTokenModel->getTokenByToken($token);
+		$registrationToken = $this->getToken($token);
 		$user = $this->userModel->getData($registrationToken->getUser()->getId());
 		$user->setEmailValid(1);
 		$this->entityManager->persist($user);
 		$this->entityManager->flush();
+	}
+
+	private function getToken(string $token) : RegistrationToken
+	{
+		return $this->registrationTokenRepository->getByKey('token', $token);
 	}
 }

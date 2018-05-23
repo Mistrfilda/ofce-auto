@@ -21,11 +21,12 @@
 		"latte/latte": "^2.4",
 		"tracy/tracy": "^2.4",
 		"contributte/console": "^0.3.0",
-		"nettrine/orm": "dev-master",
+		"nettrine/orm": "^0.1",
 		"nettrine/migrations": "^0.3",
 		"tomaj/nette-bootstrap-form": "^1.3",
 		"ublaboo/datagrid": "^5.5",
-		"kdyby/monolog": "^1.3"
+		"kdyby/monolog": "^1.3",
+		"nettrine/dbal": "^0.2.1"
 	},
 	"require-dev": {
 		"nette/tester": "^2.0"
